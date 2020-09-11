@@ -6,12 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelLazy
+import androidx.lifecycle.ViewModelProvider
 import com.cainiao.app.R
 
 class HomeFragment : Fragment() {
 
+    // 方式一：by lazy
+    val homeViewModel1: HomeViewModel by ViewModelLazy<HomeViewModel>(HomeViewModel::class,
+        { viewModelStore }, { defaultViewModelProviderFactory })
+
+    // 方式二 :
+    val homeViewModel2: HomeViewModel by viewModels<HomeViewModel> { defaultViewModelProviderFactory }
+
+    // 方式三 :手动创建
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
@@ -19,8 +29,10 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        // 2.0 + 版本方式获得 view model
+        homeViewModel = ViewModelProvider(viewModelStore,
+            defaultViewModelProviderFactory)
+            .get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
