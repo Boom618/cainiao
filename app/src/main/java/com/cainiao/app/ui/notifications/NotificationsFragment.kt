@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.blankj.utilcode.util.LogUtils
 import com.cainiao.app.R
 
 class NotificationsFragment : Fragment() {
@@ -26,6 +27,7 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        LogUtils.d("Notifications", "onCreateView")
         return root
     }
 }
