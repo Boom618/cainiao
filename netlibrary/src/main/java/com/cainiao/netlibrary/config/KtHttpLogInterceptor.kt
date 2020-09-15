@@ -4,8 +4,6 @@ import android.util.Log
 import com.cainiao.netlibrary.support.CniaoUtils
 import okhttp3.*
 import okio.Buffer
-import okio.BufferedSink
-import java.lang.StringBuilder
 import java.net.URLDecoder
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,6 +21,9 @@ class KtHttpLogInterceptor(block: KtHttpLogInterceptor.() -> Unit) : Interceptor
 
     companion object {
         private const val TAG = "<KtHttp>"
+
+        //时间格式化
+        const val MILLIS_PATTERN = "yyyy-MM-dd HH:mm:ss.SSSXXX"
 
         // 时间转 String
         fun toDateTimeStr(millis: Long, pattern: String): String {
@@ -81,7 +82,7 @@ class KtHttpLogInterceptor(block: KtHttpLogInterceptor.() -> Unit) : Interceptor
                 /*do nothing*/
             }
             LogLevel.BASIC -> logBasicRsp(sb, response)
-            LogLevel.HEADERS -> logHeadersRsp(sb, response)
+            LogLevel.HEADERS -> logHeadersRsp(response, sb)
             LogLevel.BODY -> {
                 logHeadersRsp(response, sb)
                 // body.string会抛IO异常
@@ -95,10 +96,31 @@ class KtHttpLogInterceptor(block: KtHttpLogInterceptor.() -> Unit) : Interceptor
         logIt(sb, ColorLevel.INFO)
     }
 
+    private fun logHeadersRsp(response: Response, sb: StringBuffer) {
+        logBasicRsp(sb, response)
+        val headersStr = response.headers.joinToString("") {
+            "响应 header :${it.first}=${it.second}\n"
+        }
+        sb.appendLine(headersStr)
+    }
+
+
     private fun logBasicRsp(sb: StringBuffer, response: Response) {
         sb.appendLine("响应 protocol ：${response.protocol} code :${response.code} message : ${response.message}")
             .appendLine("响应 request Url: ${decodeUrlStr(response.request.url.toString())}")
-            .appendLine("响应 sentRequestTime: ${}")
+            .appendLine(
+                "响应 sentRequestTime: ${
+                    toDateTimeStr(
+                        response.sentRequestAtMillis,
+                        MILLIS_PATTERN
+                    )
+                } receivedResponseTime ${
+                    toDateTimeStr(
+                        response.receivedResponseAtMillis,
+                        MILLIS_PATTERN
+                    )
+                }"
+            )
     }
 
     // 记录请求日志

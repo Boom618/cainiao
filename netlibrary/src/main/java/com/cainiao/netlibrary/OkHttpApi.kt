@@ -1,5 +1,7 @@
 package com.cainiao.netlibrary
 
+import com.cainiao.netlibrary.config.KtHttpLogInterceptor
+import com.cainiao.netlibrary.config.RetryInterceptor
 import com.google.gson.Gson
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -13,6 +15,8 @@ import java.util.concurrent.TimeUnit
  * OkHttpApi 实现类
  */
 class OkHttpApi : HttpApi {
+
+    var maxRetry = 0//最大重试 次数
 
     companion object {
         private const val TAG = "OkHttpApi"
@@ -28,6 +32,12 @@ class OkHttpApi : HttpApi {
         // 重连、重定向
         .retryOnConnectionFailure(true)
         .followRedirects(true)
+        // 自定义拦截器: 公共头、日志、重试、
+//        .addNetworkInterceptor(CniaoInterceptor())
+        .addNetworkInterceptor(KtHttpLogInterceptor {
+            logLevel(KtHttpLogInterceptor.LogLevel.BODY)
+        })
+        .addNetworkInterceptor(RetryInterceptor(maxRetry))
         .build()
 
     override fun get(param: Map<String, Any>, path: String, callback: IHttpCallback) {
