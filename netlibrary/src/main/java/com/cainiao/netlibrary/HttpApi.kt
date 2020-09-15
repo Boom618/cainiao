@@ -28,4 +28,14 @@ interface HttpApi {
      * 默认实现：方式二
      */
     fun postSync(body: Any, path: String): Any? = Any()
+
+    /**
+     * 取消单个请求
+     */
+    fun cancelRequest(tag: Any)
+
+    /**
+     * 取消全部请求
+     */
+    fun cancelAllRequest()
 }

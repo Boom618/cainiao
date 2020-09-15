@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val httpApi = OkHttpApi()
-        httpApi.get(emptyMap(), "api.php", object : IHttpCallback {
+        httpApi.get(emptyMap(), "https://course.api.cniao5.com/member/userinfo", object : IHttpCallback {
             override fun onSuccess(data: Any?) {
                 LogUtils.e(data.toString())
                 runOnUiThread {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        httpApi.post(req, "11", object : IHttpCallback {
+        httpApi.post(req, "https://course.api.cniao5.com/accounts/course/10301/login", object : IHttpCallback {
             override fun onSuccess(data: Any?) {
                 LogUtils.d("success result : ${data.toString()}")
                 runOnUiThread {

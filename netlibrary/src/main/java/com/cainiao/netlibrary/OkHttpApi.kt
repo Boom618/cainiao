@@ -1,5 +1,7 @@
 package com.cainiao.netlibrary
 
+import androidx.collection.SimpleArrayMap
+import com.cainiao.netlibrary.config.CniaoInterceptor
 import com.cainiao.netlibrary.config.KtHttpLogInterceptor
 import com.cainiao.netlibrary.config.RetryInterceptor
 import com.google.gson.Gson
@@ -18,6 +20,9 @@ class OkHttpApi : HttpApi {
 
     var maxRetry = 0//最大重试 次数
 
+    // 存储请求，用于取消
+    private val callMap = SimpleArrayMap<Any, Call>()
+
     companion object {
         private const val TAG = "OkHttpApi"
         private const val baseUrl = "http:api.qingyunke.com"
@@ -32,8 +37,8 @@ class OkHttpApi : HttpApi {
         // 重连、重定向
         .retryOnConnectionFailure(true)
         .followRedirects(true)
-        // 自定义拦截器: 公共头、日志、重试、
-//        .addNetworkInterceptor(CniaoInterceptor())
+        // 自定义拦截器: 公共头、日志、重试、(Header 头拦截器放在最前面，才可能打印需要数据 )
+        .addNetworkInterceptor(CniaoInterceptor())
         .addNetworkInterceptor(KtHttpLogInterceptor {
             logLevel(KtHttpLogInterceptor.LogLevel.BODY)
         })
@@ -41,20 +46,25 @@ class OkHttpApi : HttpApi {
         .build()
 
     override fun get(param: Map<String, Any>, path: String, callback: IHttpCallback) {
-        val url = "$baseUrl$path"
-        // url 转换
-        val urlBuilder = url.toHttpUrl().newBuilder()
+//        val url = "$baseUrl$path"
+//         url 转换
+//        val urlBuilder = url.toHttpUrl().newBuilder()
+        val urlBuilder = path.toHttpUrl().newBuilder()
 
         param.forEach {
             urlBuilder.addEncodedQueryParameter(it.key, it.value.toString())
         }
         val request = Request.Builder()
             .get()
+            .tag(param)
             .url(urlBuilder.build())
             .cacheControl(CacheControl.FORCE_NETWORK)
             .build()
 
-        mClient.newCall(request).enqueue(object : Callback {
+        val newCall = mClient.newCall(request)
+        // 存储请求
+        callMap.put(request.tag(), newCall)
+        newCall.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 callback.onFailed(e.message)
             }
@@ -72,11 +82,13 @@ class OkHttpApi : HttpApi {
 
         val request = Request.Builder()
             .post(Gson().toJson(body).toRequestBody())
-//            .url(url)
-            .url("https://course.api.cniao5.com/accounts/course/10301/login")
+            .url(path)
+            .tag(body)
             .build()
-
-        mClient.newCall(request).enqueue(object : Callback {
+        val newCall = mClient.newCall(request)
+        //存储请求，用于取消
+        callMap.put(request.tag(),newCall)
+        newCall.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 callback.onFailed(e.message)
             }
@@ -85,5 +97,15 @@ class OkHttpApi : HttpApi {
                 callback.onSuccess(response)
             }
         })
+    }
+
+    override fun cancelRequest(tag: Any) {
+        callMap.get(tag)?.cancel()
+    }
+
+    override fun cancelAllRequest() {
+        for (i in 0 until callMap.size()) {
+            callMap.get(callMap.keyAt(i))?.cancel()
+        }
     }
 }
