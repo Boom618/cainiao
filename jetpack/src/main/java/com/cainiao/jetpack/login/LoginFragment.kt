@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.cainiao.jetpack.databinding.FreagmentLoginBinding
+import com.cainiao.jetpack.databinding.FragmentLoginBinding
 
 /**
  * @author boomhe on 2020/9/18.
@@ -26,7 +26,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // 配置文件中开启 dataBinding = true
-        val inflate = FreagmentLoginBinding.inflate(inflater, container, false)
+        val inflate = FragmentLoginBinding.inflate(inflater, container, false)
         inflate.vm = loginViewModel
         // 得到 视图
         return inflate.root
