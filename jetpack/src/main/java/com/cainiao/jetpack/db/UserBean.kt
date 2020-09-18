@@ -38,3 +38,20 @@ interface UserDao {
     fun delete(userBean: UserBean)
 
 }
+
+@Entity(tableName = "tb_state")
+data class State(
+    @PrimaryKey(autoGenerate = false)
+    val id: Int = 0,
+    @ColumnInfo
+    val login: Boolean
+)
+
+@Dao
+interface StateDao{
+    @Query("select login from tb_state where id = 0")
+    fun query():LiveData<Boolean>
+
+    @Insert
+    fun insert(state:State)
+}
