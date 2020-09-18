@@ -1,0 +1,18 @@
+apply plugin: 'com.android.application'
+//引用dependencies中的配置
+apply from: '../dependencies.gradle'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.cainiao.jetpack"
+    }
+
+}
+
+dependencies {
+
+
+}

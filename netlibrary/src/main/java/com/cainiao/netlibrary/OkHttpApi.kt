@@ -15,8 +15,9 @@ import java.util.concurrent.TimeUnit
  * @author boomhe on 2020/9/10.
  *
  * OkHttpApi 实现类
+ * 构造函数私有化  类似单例类
  */
-class OkHttpApi : HttpApi {
+class OkHttpApi: HttpApi {
 
     var maxRetry = 0//最大重试 次数
 
