@@ -19,7 +19,7 @@ abstract class UserDataBase : RoomDatabase() {
 
         private var instance: UserDataBase? = null
 
-        public fun getInstance(context: Context): UserDataBase {
+        fun getInstance(context: Context): UserDataBase {
             return instance ?: Room.databaseBuilder(
                 context, UserDataBase::class.java, "user_db"
             )

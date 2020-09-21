@@ -3,6 +3,7 @@ package com.cainiao.jetpack
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.HandlerThread
 import android.service.autofill.UserData
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                     .navigate(R.id.nav_to_login)
             }
         })
+        val ht = HandlerThread("h-t")
 
 
     }

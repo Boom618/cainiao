@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.cainiao.jetpack.R
 import com.cainiao.jetpack.databinding.FragmentLoginBinding
 
 /**
@@ -18,7 +21,18 @@ class LoginFragment : Fragment() {
     // 调用一次
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginViewModel = ViewModelProvider(viewModelStore,defaultViewModelProviderFactory)[LoginViewModel::class.java]
+        loginViewModel = ViewModelProvider(viewModelStore,
+            defaultViewModelProviderFactory)[LoginViewModel::class.java]
+            .apply {
+                loginOK.observe(this@LoginFragment, Observer {
+                    if (it) {
+                        // 登录成功 去主页
+                        Navigation.findNavController(requireActivity(), R.id.nav_host_main).navigateUp()
+                    }
+                })
+            }
+
+
 
     }
 
