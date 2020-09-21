@@ -21,6 +21,7 @@
             android:orientation="vertical"
             android:scrollbarSize="20dp"
             android:scrollbars="vertical"
+            app:adapter="@{vm.mAdapter}"
             tools:listitem="@layout/item_rv_main"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"

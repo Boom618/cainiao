@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cainiao.jetpack.databinding.FragmentMainBinding
 
@@ -20,7 +21,12 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(
             viewModelStore,
             defaultViewModelProviderFactory
-        )[MainViewModel::class.java]
+        )[MainViewModel::class.java].apply {
+            liveList.observe(this@MainFragment, Observer {
+                mAdapter.submitList(it)
+                mAdapter.notifyDataSetChanged()
+            })
+        }
     }
 
     override fun onCreateView(

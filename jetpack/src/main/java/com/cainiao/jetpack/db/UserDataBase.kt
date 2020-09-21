@@ -9,11 +9,16 @@ import androidx.room.RoomDatabase
  * @author boomhe on 2020/9/18.
  * Dao 数据库操作层
  */
-@Database(entities = [UserBean::class, State::class], version = 1, exportSchema = false)
+@Database(
+    entities = [UserBean::class, State::class, ItemBean::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class UserDataBase : RoomDatabase() {
 
     abstract fun getUserDao(): UserDao
     abstract fun getStateDao(): StateDao
+    abstract fun getItemDao(): ItemDao
 
     companion object {
 
