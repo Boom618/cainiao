@@ -31,3 +31,12 @@ appKey:J#y9sJesv*5HmqLqEV1yUPYfpH$pHx$!
 - 抽象接口封装
 - 配置网络日志工具、重试机制
 - 管理请求：cancel/cancelAll
+
+### Retrofit 整合协程和 LiveData
+
+1. OkHttp 请求支持 liveData 的 Ktx 扩展
+2. okhttp 支持协程的 ktx 扩展
+3. retrofit 支持协程的封装
+   1. retrofit 配置 okhttpClient
+   2. builder 添加 gson 适配
+   3. 添加 livedata 的 adapter

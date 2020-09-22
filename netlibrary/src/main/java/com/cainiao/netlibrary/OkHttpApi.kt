@@ -4,6 +4,7 @@ import androidx.collection.SimpleArrayMap
 import com.cainiao.netlibrary.config.CniaoInterceptor
 import com.cainiao.netlibrary.config.KtHttpLogInterceptor
 import com.cainiao.netlibrary.config.RetryInterceptor
+import com.cainiao.netlibrary.support.IHttpCallback
 import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.suspendCancellableCoroutine

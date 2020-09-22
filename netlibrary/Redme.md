@@ -1,6 +1,6 @@
 #### Retrofit封装
 
-1. OkHttp 请求支持 liveData的Ktx扩展
+1. OkHttp 请求支持 liveData的 Ktx 扩展
 2. okhttp 支持协程的 ktx 扩展
 3. retrofit 支持协程的封装
    1. retrofit 配置 okhttpClient

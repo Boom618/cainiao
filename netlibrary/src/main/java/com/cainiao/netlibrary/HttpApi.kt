@@ -1,5 +1,7 @@
 package com.cainiao.netlibrary
 
+import com.cainiao.netlibrary.support.IHttpCallback
+
 /**
  * @author boomhe on 2020/9/10.
  * 网络统一请求接口
