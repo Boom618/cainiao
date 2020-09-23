@@ -40,3 +40,37 @@ appKey:J#y9sJesv*5HmqLqEV1yUPYfpH$pHx$!
    1. retrofit 配置 okhttpClient
    2. builder 添加 gson 适配
    3. 添加 livedata 的 adapter
+
+### Room 数据库
+
+使用： 3 步
+- @Entity 数据表实体类
+- @Dao 用于操作数据表的Dao接口
+    - @insert 新增
+    - @update
+    - @delete
+    - @query --- sqlite
+- @Database 数据库的抽象类
+
+> 其他注解
+
+1. @ignore 注解忽略对应字段，在数据表中的映射
+2. @index 索引字段标记
+3. **@primaryKey 数据表的主键**
+4. @ForeignKey 数据表的外键,确定entry表之间关系
+5. @ColumnInfo 用于数据表字段的映射定义
+6. @Embedded 用于数据表字段为外部对象的修饰，不需要那个对象也是@entity
+7. @Relation 用于多表关联
+8. @Transaction 用于数据库的事务操作标记
+9. @DatabaseView 创建虚拟数据表，而非数据库中实际的表数据，可以是多个表的部分拼接的，提高复用
+10. @TypeConverter 用于适配转换
+
+> 进阶使用
+
+- 嵌套类
+
+
+- 多表联查
+
+
+- 升降级
