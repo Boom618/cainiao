@@ -67,10 +67,12 @@ appKey:J#y9sJesv*5HmqLqEV1yUPYfpH$pHx$!
 
 > 进阶使用
 
-- 嵌套类
+- 嵌套类：
+@Embedded:将额外对象的内容字段，添加到当前entry的表内，所以，其字段不可与当前entry字段重复
 
 
 - 多表联查
+1. sql语句返回数据，构建临时bean对象
+2. databaseView 需要在 dataBase 的抽象类中 @database 的 views添加，而后可用于在@query中使用
 
-
-- 升降级
+- 升降级  addMigrations，可多个版本迁移处理
