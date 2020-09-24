@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/jetpack" />
             <option value="$PROJECT_DIR$/netlibrary" />
+            <option value="$PROJECT_DIR$/service" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

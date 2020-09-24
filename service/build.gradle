@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+//引用dependencies中的配置
+apply from: '../dependencies.gradle'
+
+android {
+
+}
+
+dependencies {
+
+    // service 作为中间层 依赖 公共组件  common
+    api project(path: ':common')
+}

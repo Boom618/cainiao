@@ -112,3 +112,5 @@ testImplementation "org.koin:koin-test:$koin_version"
 2. 组件化：一个 Apk 分成不同的组件，更高级的 模块化。
 3. 插件化：是运行期技术、与热更新、热修复紧密关联
 
+### 模块化划分
+

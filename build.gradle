@@ -1,4 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+// 阿里 组件化 路由
+apply plugin: 'com.alibaba.arouter'
+// koin 注解
+apply plugin: 'koin'
+
 buildscript {
     ext {
         kotlin_version = '1.4.10'
@@ -24,12 +30,11 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"//和navigation版本号一致
 
+        classpath "com.alibaba:arouter-register:1.0.2"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
-apply plugin: 'koin'
 
 allprojects {
     repositories {
