@@ -114,3 +114,18 @@ testImplementation "org.koin:koin-test:$koin_version"
 
 ### 模块化划分
 
+> 常用依赖库
+
+**common 模块**
+
+1. NetWork、DB
+2. Log、Utils
+3. upGradle
+4. crash
+5. baseUI、widget
+6. Router、eventBus
+7. Share、ImageLoader
+8. WebView
+9. push、permission
+10.security
+
