@@ -1,7 +1,7 @@
+include ':login'
 include ':service'
 include ':common'
 include ':jetpack'
-include ':netlibrary'
 include ':home'
 include ':app'
 rootProject.name = "cainiao"

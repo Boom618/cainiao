@@ -26,6 +26,23 @@ android {
         }
     }
 
+    //Java中的配置 生成schema文件，便于查看数据库创建表的详细信息
+//    javaCompileOptions {
+//        annotationProcessorOptions {
+//            //room 的scheme
+//            arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+//            // ARouter的需要配置
+//            arguments = [AROUTER_MODULE_NAME: project.getName()]
+//        }
+//    }
+    //kotlin ARouter 的配置方式
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+            arg("room.schemaLocation": "$projectDir/schemas".toString())
+        }
+    }
+
     // 项目架构是 MVVM
 //    dataBinding {  // 过时
 //        enabled true
@@ -114,6 +131,8 @@ dependencies {
     androidTestImplementation 'androidx.test:core-ktx:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //endregion
+
+    implementation 'com.blankj:utilcodex:1.29.0'
 
 
 }
