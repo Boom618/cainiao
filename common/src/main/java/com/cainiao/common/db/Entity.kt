@@ -56,7 +56,7 @@ data class Book(
 @DatabaseView(
     "select uname,name from db_user,book where uid = 3 or bookId =3",
     viewName = "tempBean")
-class TempBean1 {
+class TempBean {
     var uname = ""
     var name = ""
     override fun toString(): String {

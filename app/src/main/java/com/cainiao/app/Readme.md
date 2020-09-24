@@ -76,3 +76,39 @@ appKey:J#y9sJesv*5HmqLqEV1yUPYfpH$pHx$!
 2. databaseView 需要在 dataBase 的抽象类中 @database 的 views添加，而后可用于在@query中使用
 
 - 升降级  addMigrations，可多个版本迁移处理
+
+### 依赖注入框架 Koin
+
+> 添加 Koin
+
+- 添加插件
+```
+classpath "org.koin:koin-gradle-plugin:$koin_version"
+```
+- 应用插件
+```
+apply plugin: 'koin'
+```
+- 添加依赖
+```
+//koin for Androidx
+implementation "org.koin:koin-androidx-scope:$koin_version"
+implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+implementation "org.koin:koin-androidx-fragment:$koin_version"
+implementation "org.koin:koin-androidx-ext:$koin_version"
+
+testImplementation "org.koin:koin-test:$koin_version"
+```
+
+> 使用 Koin
+
+- 1. 业务`class`的创建
+- 2. 定义`koin`的容器模块`module`，内部声明类的创建（单例、工厂等）
+- 3. 在`Application`调用`stratKoin`内部初始化`modules`
+
+### 模块化、组件化、插件化
+
+1. 模块化：功能、控件、View 模块化处理
+2. 组件化：一个 Apk 分成不同的组件，更高级的 模块化。
+3. 插件化：是运行期技术、与热更新、热修复紧密关联
+

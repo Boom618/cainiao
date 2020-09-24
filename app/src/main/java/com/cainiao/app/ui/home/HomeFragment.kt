@@ -12,6 +12,10 @@ import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.LogUtils
 import com.cainiao.app.R
+import org.koin.core.KoinComponent
+import org.koin.core.get
+import org.koin.core.inject
+import org.koin.core.qualifier.named
 
 class HomeFragment : Fragment() {
 
@@ -42,5 +46,39 @@ class HomeFragment : Fragment() {
         })
         LogUtils.d("HomeFragment", "onCreateView")
         return root
+    }
+}
+
+
+class CnPerson() {
+    fun running() {
+        LogUtils.d("run ing")
+    }
+}
+
+// 带参构造方法
+class CnStudent(val name: String) {
+
+    // 次构造函数，都必须调用主构造函数
+    constructor(p: CnPerson) : this(p.toString())
+
+    fun study() {
+        LogUtils.i("Person", "CnStudent ${name}学习很努力！")
+    }
+}
+
+// 接受外部参
+
+class ViewInfo(private val view: View) : KoinComponent {
+
+    val s: CnStudent by inject(named("name"))
+
+    // 方式一 、方式二
+    val p = get<CnPerson>()
+    val p1: CnPerson = get()
+
+
+    fun showId() {
+        LogUtils.d("ViewInfo", "show view的id ${view.id} p $p  s ${s.name}")
     }
 }
