@@ -129,3 +129,10 @@ testImplementation "org.koin:koin-test:$koin_version"
 9. push、permission
 10.security
 
+
+
+
+##  技术点
+
+阿里组件路由、头条适配、腾讯 MMKV IO 优化、滴滴 DoKit 性能检查、
+
