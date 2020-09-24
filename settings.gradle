@@ -1,3 +1,5 @@
+include ':course'
+include ':study'
 include ':login'
 include ':service'
 include ':common'

@@ -1,25 +1,10 @@
-if (singleModule.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
+apply plugin: 'com.android.library'
 //引用dependencies中的配置
 apply from: '../dependencies.gradle'
 
 android {
 
     defaultConfig {
-        //只有独立运行时候才需要applicationId
-        if (singleModule.toBoolean()) {
-            applicationId "com.cainiao.common"
-        }
-        // Room 数据库。DataBase 类中 exportSchema = true 需要配置导出 schema 文件配置
-        // 便于查看数据库创建表的详细信息
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments =["room.schemaLocation":"$projectDir/schemas".toString()]
-            }
-        }
 
     }
 
