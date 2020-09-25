@@ -1,30 +1,31 @@
 package com.cainiao.app
 
-import android.os.Bundle
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.cainiao.app.databinding.ActivityMainBinding
 import com.cainiao.common.base.BaseActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * ActivityMainBinding: 是根据 XML 文件中 layout 包裹后自动生成的
+ * activity_main 加上后缀 Binding。
+ */
 //class MainActivity : AppCompatActivity() {
-class MainActivity : BaseActivity(R.layout.activity_main) {
+//class MainActivity : BaseActivity(R.layout.activity_main) {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+    override fun getLayoutRes() = R.layout.activity_main
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+    override fun initView() {
+        super.initView()
+        val navController = findNavController(R.id.fcv_main)
+        mBinding.bnvMain.setupWithNavController(navController)
+    }
 
-        runCatching {
-            // 11
+    override fun initConfig() {
+        super.initConfig()
+    }
 
-        }
+    override fun initData() {
+        super.initData()
     }
 }

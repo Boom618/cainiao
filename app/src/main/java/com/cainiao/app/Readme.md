@@ -148,3 +148,11 @@ login 组件：依赖 service 组件
 course 组件：依赖 service 组件
 mine 组件：依赖 service 组件
 ... 组件：依赖 service 组件
+
+
+## 坑
+
+> android 使用 databinding：view must have a tag
+
+在实际项目中，在不同组件下有同名 Fragment Xml 布局文件导致 ViewBinding 报错，
+原因是，DataBinding 是根据 XML 文件名生成 xmlBinding 类
