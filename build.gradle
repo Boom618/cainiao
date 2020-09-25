@@ -4,6 +4,8 @@
 apply plugin: 'com.alibaba.arouter'
 // koin 注解
 apply plugin: 'koin'
+// 滴滴 dokit
+apply plugin: 'com.didi.dokit'
 
 buildscript {
     ext {
@@ -30,9 +32,10 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"//和navigation版本号一致
 
+        // 阿里路由插件
         classpath "com.alibaba:arouter-register:1.0.2"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        //doraemonKit 调试辅助工具
+        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.2.0'
     }
 }
 
