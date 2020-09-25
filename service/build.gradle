@@ -10,4 +10,8 @@ dependencies {
 
     // service 作为中间层 依赖 公共组件  common
     api project(path: ':common')
+
+    //调试助手的工具
+    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.2.0"
+    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.2.0"
 }

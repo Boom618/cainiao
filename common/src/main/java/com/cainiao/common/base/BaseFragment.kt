@@ -15,7 +15,7 @@ abstract class BaseFragment : Fragment {
 
     constructor(@LayoutRes layout: Int) : super(layout)
 
-    protected fun <T : Any> LiveData<T>.observeKt(block: (T) -> Unit) {
+    protected fun <T : Any> LiveData<T>.observeKt(block: (T?) -> Unit) {
         this.observe(viewLifecycleOwner, Observer {
             block(it)
         })

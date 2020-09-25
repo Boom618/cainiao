@@ -136,3 +136,15 @@ testImplementation "org.koin:koin-test:$koin_version"
 
 阿里组件路由、头条适配、腾讯 MMKV IO 优化、滴滴 DoKit 性能检查、
 
+## 项目架构
+
+
+
+common 模块：基础库
+
+service 组件：中间层,依赖 common 模块
+
+login 组件：依赖 service 组件
+course 组件：依赖 service 组件
+mine 组件：依赖 service 组件
+... 组件：依赖 service 组件
