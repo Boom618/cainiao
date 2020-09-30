@@ -1,13 +1,8 @@
 package com.cainiao.app
 
-import android.view.MenuItem
-import androidx.core.view.forEachIndexed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.cainiao.app.databinding.ActivityMainBinding
 import com.cainiao.app.ui.home.HomeFragment
 import com.cainiao.common.base.BaseActivity
@@ -15,7 +10,6 @@ import com.cainiao.common.widget.BnvMediator
 import com.cainiao.course.CourseFragment
 import com.cainiao.mine.MineFragment
 import com.cainiao.study.StudyFragment
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -44,8 +38,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         super.initView()
-//        val navController = findNavController(R.id.fcv_main)
-//        mBinding.bnvMain.setupWithNavController(navController)
+        // 原始 DataBind 写法
+        // val contentView = DataBindingUtil.setContentView<ActivityMainBinding>(this, getLayoutRes())
+        // contentView.lifecycleOwner = viewLifecycleOwner
+
+        // 使用封装的 DataBind ： mBinding
         mBinding.apply {
             vp2Main.adapter = MainViewPageAdapter(this@MainActivity, fragments)
             // viewPage 与 fragment 绑定
