@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.cainiao.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home1" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/courseFragment"
         android:name="com.cainiao.course.CourseFragment"
