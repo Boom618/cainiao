@@ -14,10 +14,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * ActivityMainBinding: 是根据 XML 文件中 layout 包裹后自动生成的
- * activity_main 加上后缀 Binding。
+ * activity_login 加上后缀 Binding。
  */
 //class MainActivity : AppCompatActivity() {
-//class MainActivity : BaseActivity(R.layout.activity_main) {
+//class MainActivity : BaseActivity(R.layout.activity_login) {
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutRes() = R.layout.activity_main
@@ -47,18 +47,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             vp2Main.adapter = MainViewPageAdapter(this@MainActivity, fragments)
             // viewPage 与 fragment 绑定
             BnvMediator(bnvMain, vp2_main) { _, viewPager2 ->
+                // 关闭左右滑动
                 viewPager2.isUserInputEnabled = false
             }.attach()
         }
 
-    }
-
-    override fun initConfig() {
-        super.initConfig()
-    }
-
-    override fun initData() {
-        super.initData()
     }
 }
 
