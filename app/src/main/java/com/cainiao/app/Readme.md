@@ -1,6 +1,5 @@
 ## 笔记
 
-
 MVP：mvp 解藕 View 和 Model 层之间的联系，View 和 P 层采用接口形式，拿到的是对象引用
 MVVM：View 与 ViewModel 可双向感知，dataBinding
 
@@ -156,3 +155,11 @@ mine 组件：依赖 service 组件
 
 在实际项目中，在不同组件下有同名 Fragment Xml 布局文件导致 ViewBinding 报错，
 原因是，DataBinding 是根据 XML 文件名生成 xmlBinding 类
+
+## 登陆模块
+
+```
+<!--        ?android:actionBarSize  : API 29 下面的值-->
+<!--        ?actionBarSize  : AndroidX appcompat 下面的值-->
+android:minHeight="?android:actionBarSize"
+```

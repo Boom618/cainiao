@@ -121,6 +121,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:clickable="@{vm.obMobile.length()==11&amp;&amp;vm.obPassWord.length() > 8 }"
+            android:enabled="@{vm.obMobile.length()>0&amp;&amp;vm.obPassWord.length()>0}"
             android:onClick="@{()->vm.goLogin()}"
             android:text="@string/login"
             android:textColor="@android:color/white"
