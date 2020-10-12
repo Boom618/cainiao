@@ -12,9 +12,10 @@ import retrofit2.http.Query
  */
 interface LoginService {
 
+    // 在 LoginRepo 函数中保证是 挂起函数，这里可以不需要再挂起了
     @GET("accounts/phone/is/register")
-    suspend fun isRegister(@Query("mobi") mobi: String): Call<BaseCniaoRsp>
+    fun isRegister(@Query("mobi") mobi: String): Call<BaseCniaoRsp>
 
     @POST("accounts/course/10301/login")
-    suspend fun login(@Body reqBody: LoginReqBody): Call<BaseCniaoRsp>
+    fun login(@Body reqBody: LoginReqBody): Call<BaseCniaoRsp>
 }
