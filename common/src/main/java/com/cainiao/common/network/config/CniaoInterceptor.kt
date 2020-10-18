@@ -1,9 +1,6 @@
 package com.cainiao.common.network.config
 
-import com.blankj.utilcode.util.AppUtils
-import com.blankj.utilcode.util.DeviceUtils
-import com.blankj.utilcode.util.NetworkUtils
-import com.blankj.utilcode.util.SPStaticUtils
+import com.blankj.utilcode.util.*
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import okhttp3.CacheControl
@@ -94,7 +91,8 @@ class CniaoInterceptor : Interceptor {
         val newBuilder = originRequest.newBuilder()
             .cacheControl(CacheControl.FORCE_NETWORK)
         attachHeaders.forEach { newBuilder.header(it.first, it.second) }
-
+        // 没有添加签名 SB 了
+        newBuilder.header("sign", EncryptUtils.encryptMD5ToString(signValue))
         if (originRequest.method == "POST" && originRequest.body != null) {
             newBuilder.post(originRequest.body!!)
         } else if (originRequest.method == "GET") {
