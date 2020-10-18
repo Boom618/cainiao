@@ -30,6 +30,11 @@ sealed class DataResult<out R> {
     }
 }
 
+// 返回结果是 success 类 且 data 不为 null
+val DataResult<*>.succeeded
+    get() = this is DataResult.Success && data != null
+
+
 enum class Status {
     SUCCESS,
     ERROR,
