@@ -1,12 +1,9 @@
 package com.cainiao.login
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.cainiao.common.base.BaseViewModel
 import com.cainiao.login.net.LoginReqBody
 import com.cainiao.login.repo.ILoginResource
-import kotlinx.coroutines.launch
 
 class LoginViewModel(private val resource: ILoginResource) : BaseViewModel() {
 
