@@ -4,6 +4,7 @@ import com.blankj.utilcode.util.ToastUtils
 import com.cainiao.common.base.BaseActivity
 import com.cainiao.login.databinding.ActivityLoginBinding
 import com.cainiao.login.net.RegisterRsp
+import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
@@ -20,6 +21,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         super.initView()
         mBinding.apply {
             vm = viewModel
+            mtoobar_login.setNavigationOnClickListener { finish() }
             //mtoobar_login.setNavigationOnClickListener { finish() }
             //mtoolbarLogin.setNavigationOnClickListener { finish() }
         }
