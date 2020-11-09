@@ -21,7 +21,7 @@ class MineFragment : BaseFragment() {
     override fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding {
         return FragmentMineBinding.bind(view).apply {
             vm = viewModel
-            //UI操作 登出
+            // UI操作 登出
             btnLogoutMine.setOnClickListener {
                 CniaoDbHelper.deleteUserInfo(requireContext())
                 ARouter.getInstance().build("/login/login").navigation()

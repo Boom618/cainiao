@@ -25,7 +25,8 @@ class CnApplication : BaseApplication() {
         loadKoinModules(modules)
 
         AssistantApp.initConfig(application)
-
+        // 开启 ARouter  Debug
+        ARouter.openDebug()
         ARouter.init(application)
     }
 }
