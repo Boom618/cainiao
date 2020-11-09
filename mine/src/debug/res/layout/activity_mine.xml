@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -18,7 +18,11 @@
         <com.cainiao.mine.widget.ItemSettingsView
             android:id="@+id/isv_card"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            app:arrowColor="@{bean.arrowColor}"
+            app:icon="@{bean.iconRes}"
+            app:title="@{bean.title}"
+            app:titleColor="@{bean.titleColor}" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

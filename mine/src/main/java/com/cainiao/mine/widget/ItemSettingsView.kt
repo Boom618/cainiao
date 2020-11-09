@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.Keep
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +20,7 @@ import com.cainiao.mine.databinding.VItemSettingsBinding
 class ItemSettingsView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int
+    defStyleAttr: Int = 0
 ) :
     ConstraintLayout(context, attrs, defStyleAttr) {
 
@@ -29,11 +30,34 @@ class ItemSettingsView @JvmOverloads constructor(
 
     init {
         // 管理布局：组合控件  this ，true 关联到 root
-        VItemSettingsBinding.inflate(LayoutInflater.from(context), this, true)
-            .apply {
-                info = obItemInfo
-            }
+        VItemSettingsBinding.inflate(LayoutInflater.from(context), this, true).apply {
+            info = obItemInfo
+        }
         setBackgroundColor(Color.WHITE)
+
+        // 读取配置属性
+        context.obtainStyledAttributes(attrs, R.styleable.ItemSettingsView).apply {
+            // 标题
+            itemBean.title = getString(R.styleable.ItemSettingsView_title) ?: "title 标题"
+            val titleRGB = getColor(
+                R.styleable.ItemSettingsView_titleColor,
+                resources.getColor(R.color.colorPrimaryText)
+            )
+            itemBean.titleColor = titleRGB
+            // icon
+            itemBean.iconRes =
+                getResourceId(R.styleable.ItemSettingsView_icon, R.drawable.ic_gift_card)
+            val iconRGB = getColor(R.styleable.ItemSettingsView_iconColor, 0)
+            itemBean.iconColor = iconRGB
+            //desc
+            itemBean.desc = getString(R.styleable.ItemSettingsView_desc) ?: "标题内容表述"
+            val descRGB = getColor(R.styleable.ItemSettingsView_descColor, 0)
+            itemBean.descColor = descRGB
+            // arrow
+            itemBean.arrowRes = getResourceId(R.styleable.ItemSettingsView_arrow, R.drawable.ic_right)
+            val arrowRGB = getColor(R.styleable.ItemSettingsView_arrowColor, resources.getColor(R.color.colorSecondaryText))
+            itemBean.arrowColor = arrowRGB
+        }
     }
     //region 设置资源
 
@@ -47,16 +71,65 @@ class ItemSettingsView @JvmOverloads constructor(
     }
 
     // 设置内容描述
-    fun setDesc(desc: String){
+    fun setDesc(desc: String) {
         itemBean.desc = desc
     }
 
-    fun setIcon(iconRes: Any){
+    fun setIcon(iconRes: Any) {
         itemBean.iconRes = iconRes
     }
 
-    //region end
+    fun setArrow(arrowRes: Any) {
+        itemBean.arrowRes = arrowRes
+    }
 
+    //endregion
+
+    //region 点击事件
+
+    fun onClickIcon(listener: OnClickListener) {
+        itemBean.iconListener = listener
+    }
+
+    fun onClickTitle(listener: OnClickListener) {
+        itemBean.titleListener = listener
+    }
+
+    fun onClickDesc(listener: OnClickListener) {
+        itemBean.descListener = listener
+    }
+
+    fun onClickArrow(listener: OnClickListener) {
+        itemBean.arrowListener = listener
+    }
+
+    //endregion
+
+    //region 设置颜色
+
+    fun setIconColor(colorRes: Int) {
+        itemBean.iconColor = colorRes
+    }
+
+    fun setTitleColor(colorRes: Int) {
+        itemBean.titleColor = colorRes
+    }
+
+    fun setDescColor(colorRes: Int) {
+        itemBean.descColor = colorRes
+    }
+
+    fun setArrowColor(colorRes: Int) {
+        itemBean.arrowColor = colorRes
+    }
+
+    //endregion
+
+
+    // 整个 item 自身有 点击事件的时候，事件就不向下分发了
+    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
+        return hasOnClickListeners()
+    }
 
 }
 
