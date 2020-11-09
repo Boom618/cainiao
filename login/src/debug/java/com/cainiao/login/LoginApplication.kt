@@ -9,7 +9,7 @@ class LoginApplication : BaseApplication() {
     override fun initConfig() {
         super.initConfig()
 //        loadKoinModules(moduleService)
-        loadKoinModules(modelLogin)
+        loadKoinModules(moduleLogin)
 
     }
 

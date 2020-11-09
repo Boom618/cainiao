@@ -7,9 +7,9 @@ import com.cainiao.app.databinding.ActivityMainBinding
 import com.cainiao.app.ui.home.HomeFragment
 import com.cainiao.common.base.BaseActivity
 import com.cainiao.common.widget.BnvMediator
-//import com.cainiao.course.CourseFragment
-//import com.cainiao.mine.MineFragment
-//import com.cainiao.study.StudyFragment
+import com.cainiao.course.CourseFragment
+import com.cainiao.mine.MineFragment
+import com.cainiao.study.StudyFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -31,9 +31,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val fragments = mapOf<Int, Fragment>(
         INDEX_HOME to HomeFragment(),
-//        INDEX_COURSE to CourseFragment(),
-//        INDEX_STUDY to StudyFragment(),
-//        INDEX_MINE to MineFragment(),
+        INDEX_COURSE to CourseFragment(),
+        INDEX_STUDY to StudyFragment(),
+        INDEX_MINE to MineFragment(),
     )
 
     override fun initView() {

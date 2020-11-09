@@ -11,7 +11,7 @@ import org.koin.dsl.module
 /**
  * @author boomhe on 2020/10/12.
  */
-val modelLogin = module {
+val moduleLogin = module {
 
     // Koin  注解注入
     // 1、retrofit interface LoginService

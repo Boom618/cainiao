@@ -1,7 +1,6 @@
 package com.cainiao.mine
 
 import android.graphics.Color
-import android.view.View
 import androidx.databinding.ObservableField
 import com.blankj.utilcode.util.ToastUtils
 import com.cainiao.common.base.BaseActivity
@@ -32,9 +31,9 @@ class MineActivity : BaseActivity<ActivityMineBinding>() {
 
 
 
-            isvCard.onClickArrow {
-                ToastUtils.showShort(" onClickArrow ")
-            }
+//            isvCard.onClickArrow {
+//                ToastUtils.showShort(" onClickArrow ")
+//            }
 
             isvCard.setOnClickListener {
                 ToastUtils.showShort("item onClick")

@@ -9,4 +9,7 @@
     <color name="colorIcons">#212121</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorWindowBackGround">#F6F6F6</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
 </resources>

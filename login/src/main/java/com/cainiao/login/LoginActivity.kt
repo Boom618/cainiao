@@ -1,12 +1,16 @@
 package com.cainiao.login
 
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ToastUtils
 import com.cainiao.common.base.BaseActivity
+import com.cainiao.common.ktx.context
 import com.cainiao.login.databinding.ActivityLoginBinding
 import com.cainiao.login.net.RegisterRsp
+import com.cainiao.service.repo.CniaoDbHelper
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Route(path = "/login/login")
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     //private val viewModel: LoginViewModel by viewModels { defaultViewModelProviderFactory }
@@ -22,8 +26,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         mBinding.apply {
             vm = viewModel
             mtoobar_login.setNavigationOnClickListener { finish() }
-            //mtoobar_login.setNavigationOnClickListener { finish() }
-            //mtoolbarLogin.setNavigationOnClickListener { finish() }
         }
     }
 
@@ -35,13 +37,17 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                     repoLogin()
                 }
             }
-            liveLoginRsp.observeKt {
-                ToastUtils.showShort("登录结果 token = ${it?.token}")
+            liveLoginRsp.observeKt { resp ->
+                ToastUtils.showShort("登录结果 token = ${resp?.token}")
+
+                // 插入数据到数据库
+                resp?.let {
+                    CniaoDbHelper.insertUserInfo(context, it)
+                }
+
+                // 关闭页面
+                finish()
             }
         }
-    }
-
-    override fun initData() {
-        super.initData()
     }
 }

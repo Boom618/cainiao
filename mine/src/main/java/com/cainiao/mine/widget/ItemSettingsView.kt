@@ -38,7 +38,7 @@ class ItemSettingsView @JvmOverloads constructor(
         // 读取配置属性
         context.obtainStyledAttributes(attrs, R.styleable.ItemSettingsView).apply {
             // 标题
-            itemBean.title = getString(R.styleable.ItemSettingsView_title) ?: "title 标题"
+            itemBean.title = getString(R.styleable.ItemSettingsView_title) ?: ""
             val titleRGB = getColor(
                 R.styleable.ItemSettingsView_titleColor,
                 resources.getColor(R.color.colorPrimaryText)
@@ -50,7 +50,7 @@ class ItemSettingsView @JvmOverloads constructor(
             val iconRGB = getColor(R.styleable.ItemSettingsView_iconColor, 0)
             itemBean.iconColor = iconRGB
             //desc
-            itemBean.desc = getString(R.styleable.ItemSettingsView_desc) ?: "标题内容表述"
+            itemBean.desc = getString(R.styleable.ItemSettingsView_desc) ?: ""
             val descRGB = getColor(R.styleable.ItemSettingsView_descColor, 0)
             itemBean.descColor = descRGB
             // arrow
@@ -137,8 +137,8 @@ class ItemSettingsView @JvmOverloads constructor(
 data class ItemSettingsBean(
     // 支持 本地资源，网络资源
     var iconRes: Any = R.drawable.ic_gift_card,
-    var title: String = "Title 标题",
-    var desc: String = "标题内容描述",
+    var title: String = "",
+    var desc: String = "",
     var titleColor: Int = R.color.colorPrimaryText,
     var descColor: Int = R.color.colorSecondaryText,
     var iconColor: Int = 0,

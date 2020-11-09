@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.cainiao.service.R
 
 /**
  * @author boomhe on 2020/11/6.
@@ -14,8 +15,11 @@ import com.bumptech.glide.Glide
 // ImageView 支持图片加载绑定
 @BindingAdapter("app:srcCompat", requireAll = false)
 fun imgSrc(image: ImageView, src: Any?) {
+
+    val imgRes = src ?: R.drawable.icon_account
+
     Glide.with(image)
-        .load(src)
+        .load(imgRes)
         .into(image)
 }
 
