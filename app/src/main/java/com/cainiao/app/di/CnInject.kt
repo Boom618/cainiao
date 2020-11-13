@@ -5,6 +5,7 @@ import com.cainiao.app.ui.dashboard.DashboardViewModel
 import com.cainiao.app.ui.home.*
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.component.KoinApiExtension
 import org.koin.core.qualifier.TypeQualifier
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -22,6 +23,7 @@ class CnInject {
 /**
  * 使用 koin 依赖注入框架需要的必要声明
  */
+@OptIn(KoinApiExtension::class)
 val cnModules = module {
 
     // 单例模式

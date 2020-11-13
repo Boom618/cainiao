@@ -19,7 +19,7 @@ buildscript {
         lib_version_name = '1.0'
 
         navigation_version = '2.3.0'
-        koin_version = '2.1.6'//依赖注入框架
+        koin_version = '2.2.0-rc-3'//依赖注入框架
 
     }
     repositories {
@@ -27,7 +27,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.koin:koin-gradle-plugin:$koin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"//和navigation版本号一致

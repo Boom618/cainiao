@@ -40,8 +40,9 @@ class CniaoInterceptor : Interceptor {
             "version" to AppUtils.getAppVersionName()
         )
         // token 仅在有值的时候才传递
-        var tokenStr = ""
-        val localToken = SPStaticUtils.getString(SP_KEY_USER_TOKEN, tokenStr)
+//        var tokenStr = ""
+//        val localToken = SPStaticUtils.getString(SP_KEY_USER_TOKEN, tokenStr)
+        val localToken = SPStaticUtils.getString("token")?:"tokenNull"
         if (localToken.isNotEmpty()) {
             attachHeaders.add("token" to localToken)
         }

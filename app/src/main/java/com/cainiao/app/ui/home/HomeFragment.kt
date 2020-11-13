@@ -12,9 +12,10 @@ import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.LogUtils
 import com.cainiao.app.R
-import org.koin.core.KoinComponent
-import org.koin.core.get
-import org.koin.core.inject
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
+import org.koin.core.component.inject
 import org.koin.core.qualifier.named
 
 class HomeFragment : Fragment() {
@@ -69,6 +70,7 @@ class CnStudent(val name: String) {
 
 // 接受外部参
 
+@KoinApiExtension
 class ViewInfo(private val view: View) : KoinComponent {
 
     val s: CnStudent by inject(named("name"))

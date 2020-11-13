@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/graph_mine"
+    app:startDestination="@id/mineFragment">
+
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.cainiao.mine.ui.MineFragment"
+        android:label="MineFragment">
+        <action
+            android:id="@+id/action_mineFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.cainiao.mine.ui.UserInfoFragment"
+        android:label="UserInfoFragment" />
+</navigation>

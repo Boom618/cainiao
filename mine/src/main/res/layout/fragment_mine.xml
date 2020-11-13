@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.cainiao.mine.MineViewModel" />
+            type="com.cainiao.mine.ui.MineViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

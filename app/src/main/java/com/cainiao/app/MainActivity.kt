@@ -8,7 +8,7 @@ import com.cainiao.app.ui.home.HomeFragment
 import com.cainiao.common.base.BaseActivity
 import com.cainiao.common.widget.BnvMediator
 import com.cainiao.course.CourseFragment
-import com.cainiao.mine.MineFragment
+import com.cainiao.mine.MineContainerFragment
 import com.cainiao.study.StudyFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -33,7 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         INDEX_HOME to HomeFragment(),
         INDEX_COURSE to CourseFragment(),
         INDEX_STUDY to StudyFragment(),
-        INDEX_MINE to MineFragment(),
+        INDEX_MINE to MineContainerFragment(),
     )
 
     override fun initView() {
