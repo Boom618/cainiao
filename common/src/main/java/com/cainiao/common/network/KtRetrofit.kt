@@ -3,6 +3,7 @@ package com.cainiao.common.network
 import com.cainiao.common.network.config.CniaoInterceptor
 import com.cainiao.common.network.config.KtHttpLogInterceptor
 import com.cainiao.common.network.support.LiveDataCallAdapterFactory
+import com.cainiao.common.utils.HostInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,6 +23,7 @@ object KtRetrofit {
         // 重连、重定向
         .retryOnConnectionFailure(true)
         .followRedirects(false)
+        .addInterceptor(HostInterceptor())
         // 公共头拦截器、日志拦截器
         .addNetworkInterceptor(CniaoInterceptor())
         .addNetworkInterceptor(KtHttpLogInterceptor {
