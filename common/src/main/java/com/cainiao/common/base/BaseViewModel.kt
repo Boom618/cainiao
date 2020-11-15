@@ -21,7 +21,7 @@ abstract class BaseViewModel : ViewModel() {
     /**
      * 协程 网络请求
      */
-    fun serverAwait(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch {
+    protected fun serverAwait(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch {
         isLoading.value = true
         block.invoke(this)
         isLoading.value = false

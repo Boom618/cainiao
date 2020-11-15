@@ -1,5 +1,4 @@
 <resources>
     <string name="str_module_mine">我的模块</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_login_or_register">登录/免费注册</string>
 </resources>

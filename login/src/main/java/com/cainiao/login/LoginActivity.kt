@@ -4,6 +4,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.ToastUtils
 import com.cainiao.common.base.BaseActivity
 import com.cainiao.common.ktx.context
+import com.cainiao.common.network.config.SP_KEY_USER_TOKEN
+import com.cainiao.common.utils.CniaoSpUtils
 import com.cainiao.login.databinding.ActivityLoginBinding
 import com.cainiao.login.net.RegisterRsp
 import com.cainiao.service.repo.CniaoDbHelper
@@ -43,6 +45,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                 // 插入数据到数据库
                 resp?.let {
                     CniaoDbHelper.insertUserInfo(context, it)
+                    // 腾讯 MMKV 存储
+                    CniaoSpUtils.put(SP_KEY_USER_TOKEN, it.token)
                 }
 
                 // 关闭页面

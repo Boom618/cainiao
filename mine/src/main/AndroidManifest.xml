@@ -3,11 +3,11 @@
     package="com.cainiao.mine">
 
 
-    <application>
+<!--    <application>-->
 
-        <activity
-            android:name=".MineActivity"
-            android:launchMode="singleTop" />
-    </application>
+<!--        <activity-->
+<!--            android:name=".MineActivity"-->
+<!--            android:launchMode="singleTop" />-->
+<!--    </application>-->
 
 </manifest>

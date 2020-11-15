@@ -42,15 +42,15 @@ abstract class BaseActivity<ActBinding : ViewDataBinding> : AppCompatActivity {
     }
 
     open fun initView() {
-        LogUtils.d("${this.javaClass.simpleName} 初始化 initView")
+//        LogUtils.d("${this.javaClass.simpleName} 初始化 initView")
     }
 
     open fun initConfig() {
-        LogUtils.d("${this.javaClass.simpleName} 初始化 initConfig")
+//        LogUtils.d("${this.javaClass.simpleName} 初始化 initConfig")
     }
 
     open fun initData() {
-        LogUtils.d("${this.javaClass.simpleName} 初始化 initData")
+//        LogUtils.d("${this.javaClass.simpleName} 初始化 initData")
     }
 
 

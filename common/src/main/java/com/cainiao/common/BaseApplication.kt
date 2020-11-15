@@ -25,7 +25,7 @@ abstract class BaseApplication : Application() {
         initConfig()
         initData()
 
-        LogUtils.d("BaseApplication onCreate")
+//        LogUtils.d("BaseApplication onCreate")
     }
 
     // 实现子类的必要配置
