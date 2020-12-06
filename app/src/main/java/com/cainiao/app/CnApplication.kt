@@ -7,6 +7,7 @@ import com.cainiao.login.moduleLogin
 import com.cainiao.mine.moduleMine
 import com.cainiao.service.assistant.AssistantApp
 import com.cainiao.service.moduleService
+import com.cainiao.study.moduleStudy
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 
@@ -16,7 +17,7 @@ import org.koin.core.module.Module
 class CnApplication : BaseApplication() {
 
     private val modules = arrayListOf<Module>(
-        moduleService, /*moduleHome,*/ moduleLogin, moduleMine
+        moduleService, /*moduleHome,*/ moduleLogin, moduleMine, moduleStudy
     )
 
     override fun initConfig() {
